@@ -16,7 +16,7 @@ module.exports = class User extends Sequelize.Model {
                 type: Sequelize.STRING(100),
                 allowNull: true,
             },
-            provider: {
+            provider: { // sns 로 로그인을 했을 경우에는 snsId 저장, 아니면 local 로 저장
                 type: Sequelize.STRING(30),
                 allowNull: false,
                 defaultValue: 'local',
