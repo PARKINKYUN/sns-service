@@ -14,3 +14,21 @@ exports.isNotLoggedIn = (req, res, next) => {
         res.redirect(`/?error=${message}`);
     }
 };
+
+exports.verifyToken = (req, res, next) => {
+    try {
+
+    } catch (err) {
+        if (err.name === 'TokenExpiredError') {
+            return res.status(419).json({
+                code: 419,
+                message: 'Token is expired',
+            });
+        }
+
+        return res.status(401).json({
+            code: 401,
+            message: 'Invalid token',
+        });
+    }
+};
